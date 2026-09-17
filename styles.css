@@ -1,0 +1,2700 @@
+/* ==========================================================================
+   GEOMETRÍA FRACTAL — ESTILOS DE LA PRESENTACIÓN (4:3 RATIO - ZERO SCROLL)
+   Estilo: Dark Cyber-Scientific / Technical Blueprint
+   Fondos: Blanco limpio (#FFFFFF) global + Papel Blueprint Cuadriculado (#EEF1F5)
+   Tipografía: Outfit + Space Grotesk + IBM Plex Sans + IBM Plex Mono
+   Paleta: Ink #182B4D, Amber #C98A2C, Cyan #00C49F, Magenta #D90429, Paper #EEF1F5
+   ========================================================================== */
+
+:root {
+  --paper: #EEF1F5;
+  --paper-line: #D7DEE7;
+  --ink: #182B4D;
+  --ink-soft: #5B6B80;
+  --line: #7C8CA3;
+  --amber: #C98A2C;
+  --amber-dark: #A86D1B;
+  --amber-light: rgba(201, 138, 44, 0.12);
+  --white: #FCFDFE;
+
+  /* Neones y acentos técnicos */
+  --cyan-neon: #00B4D8;
+  --cyan-bg: #E3F8FA;
+  --magenta-neon: #D90429;
+  --magenta-bg: #FDE8EC;
+  --emerald-neon: #10B981;
+  --emerald-bg: #ECFDF5;
+  --purple-neon: #7B2CBF;
+  --purple-bg: #F3E8FF;
+
+  --font-hero: 'Outfit', sans-serif;
+  --font-title: 'Space Grotesk', sans-serif;
+  --font-body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  /* Alturas fijas para garantizar 100vh exactos sin scroll */
+  --toolbar-h: 46px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Scrollbar técnico sutil para contenedores internos si aplica */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--paper);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink);
+}
+
+::selection {
+  background: var(--amber);
+  color: #fff;
+}
+
+/* ==========================================================================
+   1. FONDO GENERAL Y ENVOLTURA (ZERO SCROLL)
+   ========================================================================== */
+html,
+body {
+  width: 100%;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  background-color: #FFFFFF;
+  color: var(--ink);
+  font-family: var(--font-body);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.35;
+}
+
+.presentation-wrap {
+  width: 100%;
+  flex: 1;
+  height: 100vh;
+  max-height: 100vh;
+  padding: 8px 14px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* EL LIENZO 4:3 (RATIO ESTRICTO) */
+.presentation-deck.ratio-4-3 {
+  height: calc(100vh - var(--toolbar-h) - 18px);
+  max-height: calc(100vh - var(--toolbar-h) - 18px);
+  width: calc((100vh - var(--toolbar-h) - 18px) * 4 / 3);
+  max-width: min(calc((100vh - var(--toolbar-h) - 18px) * 4 / 3), calc(100vw - 20px));
+  aspect-ratio: 4 / 3;
+  margin: 0 auto;
+
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--paper-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--paper-line) 1px, transparent 1px);
+  background-size: 24px 24px;
+
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  box-shadow:
+    0 12px 36px rgba(24, 43, 77, 0.16),
+    0 2px 6px rgba(24, 43, 77, 0.08);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   2. CABECERA INSTITUCIONAL INTERNA
+   ========================================================================== */
+.deck-header {
+  width: 100%;
+  height: clamp(48px, 7.5vh, 58px);
+  flex-shrink: 0;
+  background: var(--white);
+  border-bottom: 2px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(10px, 1.8vw, 16px);
+  z-index: 25;
+}
+
+.headbar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logos-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid var(--paper-line);
+}
+
+.logo-inst-horiz {
+  height: clamp(28px, 4.5vh, 36px);
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+}
+
+.logo-inst-square {
+  height: clamp(28px, 4.5vh, 36px);
+  width: auto;
+  max-width: 42px;
+  object-fit: contain;
+}
+
+.headbar-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.18;
+}
+
+.inst-title {
+  font-family: var(--font-title);
+  font-size: clamp(0.86rem, 1.65vh, 0.98rem);
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.inst-sub {
+  font-size: clamp(0.70rem, 1.35vh, 0.78rem);
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+
+.headbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: clamp(0.72rem, 1.35vh, 0.82rem);
+  white-space: nowrap;
+}
+
+.badge-tech {
+  background: var(--ink);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: clamp(0.70rem, 1.32vh, 0.78rem);
+  font-weight: 600;
+  padding: 4px 9px;
+  border-radius: 4px;
+}
+
+.teacher-tag {
+  color: var(--ink-soft);
+  font-size: clamp(0.72rem, 1.35vh, 0.82rem);
+}
+
+.teacher-tag b {
+  color: var(--ink);
+}
+
+/* ==========================================================================
+   3. VIEWPORT DE DIAPOSITIVAS Y NAVEGACIÓN
+   ========================================================================== */
+.deck-slides-viewport {
+  flex: 1;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.presentation-slide {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(6px);
+  padding: clamp(6px, 1.2vh, 12px) clamp(10px, 1.8vw, 18px);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.presentation-slide.active {
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+  position: relative;
+}
+
+.slide-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+/* CABECERA ESTÁNDAR DE DIAPOSITIVA (CON INDICADOR DE PASOS / SUB-SLIDES) */
+.slide-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: clamp(4px, 0.8vh, 8px);
+  border-bottom: 1.5px solid var(--paper-line);
+  padding-bottom: clamp(3px, 0.6vh, 6px);
+  flex-shrink: 0;
+  background: rgba(252, 253, 254, 0.88);
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: 4px;
+}
+
+.sh-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.slide-num-tag {
+  display: none !important;
+}
+
+.slide-titles {
+  min-width: 0;
+}
+
+.slide-titles h2 {
+  font-family: var(--font-title);
+  font-size: clamp(0.96rem, 2.1vh, 1.18rem);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.slide-desc {
+  font-size: clamp(0.68rem, 1.3vh, 0.76rem);
+  color: var(--ink-soft);
+  line-height: 1.15;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Indicador de sub-diapositivas dentro del subtema */
+.subslide-dots {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.ss-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--paper-line);
+  border: 1px solid var(--line);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.ss-dot:hover {
+  background: var(--amber);
+  transform: scale(1.2);
+}
+
+.ss-dot.active {
+  background: var(--amber);
+  border-color: var(--amber);
+  transform: scale(1.35);
+  box-shadow: 0 0 5px rgba(201, 138, 44, 0.5);
+}
+
+/* ==========================================================================
+   4. PORTADA (SLIDE 1.1)
+   ========================================================================== */
+.cover-slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  gap: 6px;
+}
+
+.cover-top-block {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.cover-kicker-row {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.pill-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--ink);
+  padding: 1px 6px;
+  border-radius: 3px;
+  letter-spacing: 0.04em;
+}
+
+.pill-kicker-sub {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: var(--amber-dark);
+  background: var(--amber-light);
+  border: 1px solid var(--amber);
+  padding: 1px 6px;
+  border-radius: 3px;
+}
+
+.main-title {
+  font-family: var(--font-hero);
+  font-size: clamp(1.8rem, 4.4vh, 2.3rem);
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, var(--ink) 0%, #2A4365 70%, var(--amber) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.05;
+}
+
+.main-subtitle {
+  font-size: clamp(1.3rem, 1.5vh, 0.82rem);
+  color: var(--ink-soft);
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.cover-stage-area {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 2px 0;
+}
+
+.cover-media-large {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, #111827 0%, #070B14 100%);
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+  color: #E2E8F0;
+}
+
+.media-glow-canvas-wrap {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preview-mini-canvas,
+.cover-fractal-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #070B14;
+}
+
+.media-overlay-content {
+  position: absolute;
+  bottom: 8px;
+  left: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(7, 11, 20, 0.75);
+  backdrop-filter: blur(4px);
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.media-subtext {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #00F5D4;
+}
+
+.media-action-hint {
+  font-size: 0.62rem;
+  color: #94A3B8;
+}
+
+.cover-footer-card {
+  background: var(--white);
+  border: 1.5px solid var(--paper-line);
+  border-radius: 8px;
+  padding: clamp(8px, 1.3vh, 12px) clamp(12px, 1.8vw, 18px);
+  box-shadow: 0 2px 8px rgba(24, 43, 77, 0.06);
+}
+
+.data-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px clamp(12px, 1.8vw, 20px);
+}
+
+.data-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2px;
+}
+
+.data-item.full-width {
+  grid-column: 1 / -1;
+  border-top: 1px dashed var(--paper-line);
+  padding-top: 2px;
+  margin-top: 2px;
+}
+
+.d-label {
+  font-family: var(--font-mono);
+  font-size: clamp(0.68rem, 1.22vh, 0.78rem);
+  text-transform: none;
+  color: var(--ink-soft);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+.d-value {
+  font-family: var(--font-title);
+  font-size: clamp(0.86rem, 1.6vh, 0.98rem);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.22;
+  text-align: center;
+}
+
+.d-value.link-val a {
+  color: var(--amber);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+}
+
+.d-value.link-val a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   4.1 GANCHO VISUAL CON VIDEO INICIAL 100% 4:3 (SLIDE 1 - MODO CINEMA PURO)
+   ========================================================================== */
+.presentation-wrap.first-slide-cinema .deck-header {
+  display: none !important;
+}
+
+.presentation-wrap.first-slide-cinema #cameraBox,
+.presentation-wrap.hide-camera #cameraBox,
+.presentation-wrap:has(#slide-1.active) #cameraBox,
+.presentation-wrap:has(#slide-2.active) #cameraBox {
+  display: none !important;
+}
+
+.presentation-wrap.first-slide-cinema .presentation-toolbar {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.presentation-wrap.first-slide-cinema .presentation-deck {
+  background: #000000 !important;
+  background-image: none !important;
+  border-color: #000000 !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4) !important;
+}
+
+#slide-1 {
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: #000000 !important;
+  overflow: hidden !important;
+}
+
+.cinema-video-fullwrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.hook-video-fullscreen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #000000;
+  display: block;
+  transform: rotate(90deg) scale(1.2);
+  transform-origin: center center;
+  transition: transform 0.2s ease;
+}
+
+/* ==========================================================================
+   4.9 VISTA DE MEMES / IMÁGENES CENTRALES DE ALTO IMPACTO
+   ========================================================================== */
+.meme-slide-layout {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.meme-display-stage {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(6px, 1.2vh, 10px);
+  background: var(--white);
+  border: 1.5px solid var(--paper-line);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(24, 43, 77, 0.05);
+  overflow: hidden;
+}
+
+.meme-image-contained {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 6px;
+  display: block;
+}
+
+.slide-header.header-center {
+  position: relative;
+  justify-content: center;
+  text-align: center;
+}
+
+.slide-header.header-center .sh-left {
+  width: 100%;
+  justify-content: center;
+}
+
+.slide-header.header-center .slide-titles {
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.slide-header.header-center .subslide-dots {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.quote-hero-banner.quote-centered {
+  text-align: center;
+  border-left: 2.5px solid var(--amber);
+  border-right: 2.5px solid var(--amber);
+  padding: 5px 14px;
+}
+
+.quote-hero-banner.quote-centered .quote-hero-text {
+  text-align: center;
+}
+
+.quote-hero-banner.quote-centered .quote-hero-author {
+  text-align: center;
+  margin-top: 3px;
+}
+
+/* ==========================================================================
+   5. COMPONENTES Y ESTRUCTURAS DE DIAPOSITIVAS (2 COLUMNAS, SPLIT, INTERACTIVO)
+   ========================================================================== */
+.slide-grid-2cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(8px, 1.5vw, 14px);
+  flex-grow: 1;
+  min-height: 0;
+  height: calc(100% - clamp(30px, 5vh, 42px));
+  overflow: hidden;
+}
+
+.slide-col-text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.slide-col-visual {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* MARCADOR DE POSICIÓN (MEDIA PLACEHOLDER) ESTILIZADO */
+.media-placeholder {
+  background: var(--white);
+  border: 1.5px dashed var(--amber);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6px;
+  position: relative;
+  transition: all 0.2s ease;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(24, 43, 77, 0.04);
+}
+
+.media-placeholder.h-full {
+  flex: 1;
+  height: 100%;
+  min-height: 0;
+}
+
+.media-badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono);
+  font-size: clamp(0.64rem, 1.3vh, 0.74rem);
+  font-weight: 700;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--paper-line);
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-bottom: 3px;
+  z-index: 2;
+}
+
+.media-badge-tag.video-badge {
+  background: #1E293B;
+  color: #38BDF8;
+  border-color: #0284C7;
+}
+
+.media-badge-tag.retro-badge {
+  background: #022c22;
+  color: #34d399;
+  border-color: #059669;
+}
+
+.media-badge-tag.meme-badge-color {
+  background: #FFFBEB;
+  color: #B45309;
+  border-color: #F59E0B;
+}
+
+.placeholder-hint {
+  font-size: clamp(0.62rem, 1.2vh, 0.7rem);
+  color: var(--ink-soft);
+  max-width: 95%;
+  line-height: 1.2;
+}
+
+/* ==========================================================================
+   6. SLIDE 1.2 (TERMINAL RETRO 1975)
+   ========================================================================== */
+.terminal-card {
+  background: #0F172A;
+  border-radius: 6px;
+  border: 1.5px solid #1E293B;
+  overflow: hidden;
+  font-family: var(--font-mono);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.terminal-bar {
+  background: #1E293B;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.t-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.t-dot.red {
+  background: #EF4444;
+}
+
+.t-dot.yellow {
+  background: #F59E0B;
+}
+
+.t-dot.green {
+  background: #10B981;
+}
+
+.t-title {
+  font-size: 0.6rem;
+  color: #94A3B8;
+  margin-left: 4px;
+  font-weight: 600;
+}
+
+.terminal-body {
+  padding: 8px 10px;
+  font-size: clamp(0.64rem, 1.3vh, 0.74rem);
+  line-height: 1.4;
+  color: #38BDF8;
+}
+
+.cmd-ok {
+  color: #34D399;
+  font-weight: 700;
+}
+
+.error-line {
+  color: #F87171;
+  margin-top: 4px;
+}
+
+.error-msg {
+  color: #EF4444;
+  font-weight: 700;
+}
+
+.retro-screen {
+  background: #02120b;
+  border: 2px solid #059669;
+}
+
+.retro-crt-mockup {
+  width: 100%;
+  height: calc(100% - 24px);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.crt-canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.crt-scanlines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+  background-size: 100% 4px;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   7. SPLIT STAGE (SLIDES 2.1, 7.1, 9.1)
+   ========================================================================== */
+.split-stage-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-height: 0;
+  height: calc(100% - clamp(60px, 10vh, 80px));
+}
+
+.split-half {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: 1.5px solid var(--paper-line);
+  border-radius: 6px;
+  padding: 6px;
+  overflow: hidden;
+}
+
+.split-header-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 3px 6px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+  text-align: center;
+}
+
+.split-header-tag.tag-blue {
+  background: #E0F2FE;
+  color: #0369A1;
+}
+
+.split-header-tag.tag-amber {
+  background: #FEF3C7;
+  color: #B45309;
+}
+
+.split-media {
+  flex: 1;
+  min-height: 0;
+  border-style: solid;
+  border-color: var(--paper-line);
+  background: var(--paper);
+}
+
+.split-footer-note {
+  font-size: 0.64rem;
+  color: var(--ink-soft);
+  text-align: center;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.split-vs-badge {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: #fff;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 0.72rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.quote-hero-banner {
+  background: var(--white);
+  border-left: 3px solid var(--amber);
+  border-radius: 4px;
+  padding: 6px 12px;
+  margin-bottom: 6px;
+  box-shadow: 0 1px 4px rgba(24, 43, 77, 0.04);
+}
+
+.quote-hero-text {
+  font-size: clamp(0.72rem, 1.5vh, 0.84rem);
+  font-style: italic;
+  color: var(--ink);
+  line-height: 1.25;
+}
+
+.quote-hero-author {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  color: var(--amber-dark);
+  font-weight: 700;
+  text-align: right;
+  margin-top: 2px;
+}
+
+/* ==========================================================================
+   8. MEME CARD LAYOUTS (SLIDE 2.2, 6.3)
+   ========================================================================== */
+.meme-card-wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.h-meme-frame {
+  flex: 1;
+  height: 100%;
+  background: #FFFBEB;
+  border: 2px solid #F59E0B;
+}
+
+.meme-mockup-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 4px;
+}
+
+.meme-top-text,
+.meme-bottom-text {
+  font-family: var(--font-hero);
+  font-weight: 800;
+  font-size: clamp(0.7rem, 1.5vh, 0.82rem);
+  color: #78350F;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.meme-img-placeholder {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #FEF3C7;
+  border: 1px dashed #D97706;
+  border-radius: 6px;
+  width: 90%;
+  margin: 4px 0;
+  padding: 6px;
+}
+
+.meme-icon {
+  font-size: 2.2rem;
+}
+
+.meme-desc {
+  font-size: 0.64rem;
+  color: #92400E;
+  text-align: center;
+  font-weight: 600;
+}
+
+.stat-impact-box {
+  background: var(--white);
+  border: 1.5px solid var(--paper-line);
+  border-radius: 6px;
+  padding: 8px 10px;
+}
+
+.stat-impact-title {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 0.72rem;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.stat-compare-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.stat-box-row {
+  padding: 6px 8px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-box-row.bad {
+  background: #FEF2F2;
+  border-left: 3px solid #EF4444;
+}
+
+.stat-box-row.good {
+  background: #ECFDF5;
+  border-left: 3px solid #10B981;
+}
+
+.row-label {
+  font-size: 0.62rem;
+  color: var(--ink-soft);
+}
+
+.row-val {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.78rem;
+  color: var(--ink);
+}
+
+.row-desc {
+  font-size: 0.62rem;
+  color: var(--ink-soft);
+}
+
+/* ==========================================================================
+   9. SLIDE 2.3 TRANSICIÓN HERO (¿QUÉ ES UNA DIMENSIÓN?)
+   ========================================================================== */
+.transition-hero-stage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  gap: 10px;
+}
+
+.big-question-badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--amber);
+  background: var(--amber-light);
+  border: 1px solid var(--amber);
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.glow-orb {
+  position: absolute;
+  width: clamp(280px, 50vw, 550px);
+  height: clamp(280px, 50vh, 550px);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 180, 216, 0.08) 0%, rgba(201, 138, 44, 0.06) 45%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(25px);
+}
+
+.big-hero-question {
+  font-family: var(--font-hero);
+  font-size: clamp(2.5rem, 6.5vh, 4.2rem);
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -0.025em;
+  max-width: 90%;
+  line-height: 1.15;
+  text-align: center;
+  text-wrap: balance;
+  position: relative;
+  z-index: 1;
+}
+
+.big-hero-desc {
+  font-size: clamp(0.74rem, 1.6vh, 0.88rem);
+  color: var(--ink-soft);
+  max-width: 75%;
+}
+
+.dimension-step-strip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  background: var(--white);
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1.5px solid var(--paper-line);
+  box-shadow: 0 4px 12px rgba(24, 43, 77, 0.06);
+}
+
+.d-step-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.d-step-item.highlight {
+  color: var(--amber-dark);
+}
+
+.d-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: var(--paper);
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid var(--line);
+  margin-bottom: 2px;
+}
+
+.d-badge.fract {
+  background: var(--amber);
+  color: #fff;
+  border-color: var(--amber);
+}
+
+.d-step-arrow {
+  color: var(--line);
+  font-size: 0.8rem;
+}
+
+/* ==========================================================================
+   9.1 SLIDE 3.1 LA CURVA DE PEANO (VIDEO HERO)
+   ========================================================================== */
+.peano-video-stage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 4px 0;
+}
+
+.peano-video-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: 100%;
+  max-height: calc(100% - 26px);
+  max-width: 95%;
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(9, 13, 22, 0.25), 0 0 0 1.5px var(--paper-line);
+  background: #070B14;
+}
+
+.peano-media-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.video-credit-note {
+  font-family: var(--font-title);
+  font-size: clamp(11px, 1.1vw, 13px);
+  color: var(--ink-soft);
+  text-align: center;
+  margin-top: 6px;
+  letter-spacing: 0.01em;
+}
+
+.video-credit-note i {
+  font-style: italic;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   9.2 SLIDE 5.1 FRACTALES EN LA NATURALEZA (BRÓCOLI & HELECHO DE BARNSLEY)
+   ========================================================================== */
+.nature-duo-stage {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(16px, 3.5vw, 40px);
+  padding: 4px 10px 10px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.nature-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  max-height: 100%;
+  max-width: 48%;
+  background: #090D16;
+  border: 1.5px solid var(--paper-line);
+  border-radius: 8px;
+  box-shadow: 0 10px 28px rgba(9, 13, 22, 0.2);
+  padding: 8px 8px 10px;
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.nature-card:hover {
+  border-color: var(--amber);
+  box-shadow: 0 14px 34px rgba(9, 13, 22, 0.3);
+}
+
+.nature-media-wrap {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #05080E;
+  border-radius: 6px;
+}
+
+.nature-media-img,
+.nature-media-video {
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: 4px;
+}
+
+.nature-media-video {
+  cursor: pointer;
+}
+
+.nature-caption {
+  font-family: var(--font-title);
+  font-size: clamp(13px, 1.35vw, 16px);
+  font-weight: 600;
+  color: #EEF1F5;
+  margin-top: 8px;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+/* ==========================================================================
+   9.3 SLIDE 6.1 CINE Y CGI (VOL LIBRE & STAR TREK II)
+   ========================================================================== */
+.cine-duo-stage {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(16px, 2.5vw, 32px);
+  padding: 4px 10px 10px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.cine-video-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  max-width: 48%;
+  background: #090D16;
+  border: 1.5px solid var(--paper-line);
+  border-radius: 8px;
+  box-shadow: 0 10px 28px rgba(9, 13, 22, 0.2);
+  padding: 8px 8px 10px;
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cine-video-card:hover {
+  border-color: var(--amber);
+  box-shadow: 0 14px 34px rgba(9, 13, 22, 0.3);
+}
+
+.cine-video-wrap {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #05080E;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.cine-media-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.cine-caption {
+  font-family: var(--font-title);
+  font-size: clamp(13px, 1.35vw, 16px);
+  font-weight: 600;
+  color: #EEF1F5;
+  margin-top: 8px;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+#canvasMandelbulb3D {
+  cursor: grab;
+  background: #02050A;
+  touch-action: none;
+}
+
+#canvasMandelbulb3D:active {
+  cursor: grabbing;
+}
+
+/* ==========================================================================
+   9.4 SLIDE 7.1 HARDWARE Y TELECOM (ANTENAS EXTERNAS VS FRACTALES)
+   ========================================================================== */
+.antenna-compare-stage {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(14px, 2.5vw, 28px);
+  padding: 4px 10px 10px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.antenna-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 100%;
+  max-height: 100%;
+  max-width: 46%;
+  background: var(--white);
+  border: 1.5px solid var(--paper-line);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(24, 43, 77, 0.08);
+  padding: 8px 8px 10px;
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.antenna-card:hover {
+  border-color: var(--amber);
+  box-shadow: 0 12px 30px rgba(24, 43, 77, 0.15);
+}
+
+.antenna-media-wrap {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F1F5F9;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.antenna-media-img {
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: 4px;
+}
+
+.antenna-caption {
+  font-family: var(--font-title);
+  font-size: clamp(13px, 1.3vw, 15px);
+  font-weight: 700;
+  color: var(--ink);
+  margin-top: 8px;
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+
+/* ==========================================================================
+   9.5 SLIDE 8.1 & 8.2 CIBERSEGURIDAD Y REDES (ARNOLD CAT MAP & VIDEO RED)
+   ========================================================================== */
+.arnold-cat-stage {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px 10px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.arnold-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #090D16;
+  border: 1.5px solid var(--paper-line);
+  border-radius: 10px;
+  box-shadow: 0 12px 32px rgba(9, 13, 22, 0.22);
+  padding: 10px 14px 12px;
+  box-sizing: border-box;
+}
+
+.arnold-canvas-wrap {
+  width: 280px;
+  height: 280px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #05080E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+}
+
+#canvasChaosCrypto {
+  width: 280px;
+  height: 280px;
+  display: block;
+  cursor: pointer;
+}
+
+.arnold-controls-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.arnold-status-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #EEF1F5;
+  margin-top: 8px;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.arnold-status-badge b {
+  color: var(--cyan-neon);
+}
+
+.peano-video-wrapper.vertical-video-wrapper {
+  aspect-ratio: 4 / 5;
+  width: auto;
+  height: 100%;
+  max-height: calc(100% - 10px);
+}
+
+/* ==========================================================================
+   9.5 SLIDE 9.3 LA PARADOJA DE LA COSTA BRITÁNICA (ANIMACIÓN FRACTAL)
+   ========================================================================== */
+.coastline-anim-stage {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 4px 10px 10px;
+  box-sizing: border-box;
+}
+
+.coastline-canvas-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: 100%;
+  max-height: calc(100% - 10px);
+  max-width: 95%;
+  aspect-ratio: 16 / 9;
+  background: #05080E;
+  border: 1.5px solid var(--paper-line);
+  border-radius: 8px;
+  box-shadow: 0 12px 30px rgba(9, 13, 22, 0.3);
+  overflow: hidden;
+  transition: border-color 0.25s ease;
+}
+
+.coastline-canvas-card:hover {
+  border-color: var(--amber);
+}
+
+.coastline-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: pointer;
+}
+
+.coastline-hud-overlay {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.hud-pill {
+  background: rgba(9, 13, 22, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-family: var(--font-mono);
+  font-size: clamp(11px, 1.15vw, 13px);
+  color: #EEF1F5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.hud-pill b {
+  color: var(--amber);
+}
+
+.hud-pill.hud-accent b {
+  color: #00F5D4;
+}
+
+.hud-pill.hud-dim {
+  color: var(--ink-soft);
+  font-size: clamp(10px, 1vw, 12px);
+}
+
+/* ==========================================================================
+   10. INTERACTIVE STAGE LAYOUT (CANVAS + CONTROLES + INFO)
+   ========================================================================== */
+.interactive-stage-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(8px, 1.5vw, 14px);
+  flex: 1;
+  min-height: 0;
+  height: calc(100% - clamp(30px, 5vh, 42px));
+  overflow: hidden;
+}
+
+.interactive-canvas-panel {
+  display: flex;
+  flex-direction: column;
+  background: #090D16;
+  border: 1.5px solid var(--ink);
+  border-radius: 6px;
+  overflow: hidden;
+  height: 100%;
+}
+
+.live-fractal-canvas {
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  display: block;
+}
+
+.canvas-controls-bar {
+  background: #111827;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  border-top: 1px solid #1F2937;
+}
+
+.btn-ctrl {
+  background: #1F2937;
+  border: 1px solid #374151;
+  color: #F3F4F6;
+  font-family: var(--font-title);
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+
+.btn-ctrl:hover {
+  background: #374151;
+  color: #fff;
+}
+
+.btn-ctrl.btn-accent {
+  background: var(--amber);
+  border-color: var(--amber);
+  color: #fff;
+}
+
+.btn-ctrl.btn-accent:hover {
+  background: var(--amber-dark);
+}
+
+.btn-ctrl.btn-danger {
+  background: #DC2626;
+  border-color: #B91C1C;
+  color: #fff;
+}
+
+.btn-ctrl.btn-danger:hover {
+  background: #991B1B;
+}
+
+.ctrl-indicator {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: #9CA3AF;
+}
+
+.ctrl-indicator b {
+  color: #F9FAFB;
+}
+
+.interactive-info-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  overflow: hidden;
+  justify-content: center;
+}
+
+/* TARJETAS DE INFORMACIÓN E INFOGRAFÍA */
+.info-card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.info-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background: var(--white);
+  border: 1.5px solid var(--paper-line);
+  border-radius: 6px;
+  padding: 6px 10px;
+  box-shadow: 0 1px 4px rgba(24, 43, 77, 0.04);
+}
+
+.info-card.highlight-amber {
+  border-left: 3px solid var(--amber);
+}
+
+.info-card.highlight-green {
+  border-left: 3px solid var(--emerald-neon);
+}
+
+.info-card.highlight-cyan {
+  border-left: 3px solid var(--cyan-neon);
+}
+
+.info-card.highlight-purple {
+  border-left: 3px solid var(--purple-neon);
+}
+
+.card-icon {
+  font-size: 1.15rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.info-card h4 {
+  font-family: var(--font-title);
+  font-size: clamp(0.74rem, 1.5vh, 0.82rem);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.info-card p {
+  font-size: clamp(0.64rem, 1.3vh, 0.72rem);
+  color: var(--ink-soft);
+  line-height: 1.25;
+}
+
+/* ==========================================================================
+   11. MEDIDORES Y GAUGES (SLIDE 3.3, 8.2, 9.3)
+   ========================================================================== */
+.gauge-display-card {
+  background: var(--white);
+  border: 1.5px solid var(--amber);
+  border-radius: 6px;
+  padding: 8px 10px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(201, 138, 44, 0.1);
+}
+
+.gauge-caption {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--ink-soft);
+  font-weight: 700;
+}
+
+.gauge-value {
+  font-family: var(--font-hero);
+  font-size: clamp(1.2rem, 3vh, 1.6rem);
+  font-weight: 800;
+  color: var(--amber-dark);
+  line-height: 1.1;
+  margin: 2px 0;
+}
+
+.gauge-formula {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--ink);
+}
+
+.stat-counter-box {
+  background: var(--white);
+  border: 1.5px solid var(--paper-line);
+  border-radius: 6px;
+  padding: 6px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.s-counter-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.65rem;
+  color: var(--ink-soft);
+}
+
+.s-counter-item .sc-val {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.s-counter-item.highlight-red .sc-val {
+  color: #DC2626;
+}
+
+/* ==========================================================================
+   12. GPU CACHE COMPARATIVE (SLIDE 3.4)
+   ========================================================================== */
+.gpu-compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(8px, 1.5vw, 14px);
+  flex: 1;
+  min-height: 0;
+  margin-bottom: 6px;
+}
+
+.gpu-card {
+  background: var(--white);
+  border-radius: 6px;
+  border: 1.5px solid var(--paper-line);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.gpu-card.traditional {
+  border-top: 3px solid #EF4444;
+}
+
+.gpu-card.fractal {
+  border-top: 3px solid #10B981;
+}
+
+.tag-alert-bad {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #DC2626;
+}
+
+.tag-alert-good {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #059669;
+}
+
+.h-gpu-diagram {
+  flex: 1;
+  min-height: 0;
+  margin: 6px 0;
+  background: #0F172A;
+}
+
+.raster-grid-mockup {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  padding: 8px;
+}
+
+.raster-grid-mockup span {
+  width: 20px;
+  height: 20px;
+  background: #334155;
+  border-radius: 2px;
+}
+
+.raster-grid-mockup.hilbert-active span.h-dot.active {
+  background: #00F5D4;
+  box-shadow: 0 0 6px #00F5D4;
+}
+
+.gpu-card-metric {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 4px 6px;
+  border-radius: 4px;
+}
+
+.gpu-card-metric.bad {
+  background: #FEF2F2;
+  color: #DC2626;
+}
+
+.gpu-card-metric.good {
+  background: #ECFDF5;
+  color: #059669;
+}
+
+.gpu-footer-tag {
+  background: var(--white);
+  border: 1px solid var(--paper-line);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+/* ==========================================================================
+   13. FORMULA HERO & CODE BLOCK (SLIDE 4.2)
+   ========================================================================== */
+.formula-card-hero {
+  background: var(--white);
+  border: 2px solid var(--amber);
+  border-radius: 6px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(201, 138, 44, 0.08);
+}
+
+.formula-hero-badge {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--amber-dark);
+  background: var(--amber-light);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.math-hero-display {
+  font-family: var(--font-hero);
+  font-size: clamp(1.4rem, 3.5vh, 1.8rem);
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: 0.05em;
+  margin: 6px 0;
+}
+
+.formula-breakdown-row {
+  display: flex;
+  justify-content: space-around;
+  font-size: 0.65rem;
+  color: var(--ink-soft);
+  border-top: 1px dashed var(--paper-line);
+  padding-top: 6px;
+  margin-top: 4px;
+}
+
+.fb-item b {
+  color: var(--ink);
+  font-family: var(--font-mono);
+}
+
+.code-editor-card {
+  background: #0D1117;
+  border-radius: 6px;
+  border: 1.5px solid #30363D;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.code-editor-bar {
+  background: #161B22;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-bottom: 1px solid #30363D;
+}
+
+.code-lang {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: #8B949E;
+  margin-left: 6px;
+}
+
+.code-block {
+  padding: 8px 10px;
+  font-family: var(--font-mono);
+  font-size: clamp(0.6rem, 1.25vh, 0.68rem);
+  line-height: 1.35;
+  color: #C9D1D9;
+  overflow: auto;
+  flex: 1;
+}
+
+.code-block .kw {
+  color: #FF7B72;
+  font-weight: 600;
+}
+
+.code-block .num {
+  color: #79C0FF;
+}
+
+.code-block .comment {
+  color: #8B949E;
+  font-style: italic;
+}
+
+/* ==========================================================================
+   14. ESCAPE RULES & DEEP ZOOM CINEMA (SLIDE 4.3, 4.4)
+   ========================================================================== */
+.escape-rules-card {
+  background: var(--white);
+  border: 1.5px solid var(--paper-line);
+  border-radius: 6px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.escape-rules-card h4 {
+  font-family: var(--font-title);
+  font-size: 0.74rem;
+  color: var(--ink);
+}
+
+.escape-rule-item {
+  padding: 4px 6px;
+  border-radius: 4px;
+}
+
+.escape-rule-item.blue-rule {
+  background: #F0F9FF;
+  border-left: 3px solid #0284C7;
+}
+
+.escape-rule-item.orange-rule {
+  background: #FFF7ED;
+  border-left: 3px solid #EA580C;
+}
+
+.escape-rule-item.dark-rule {
+  background: #F8FAFC;
+  border-left: 3px solid #0F172A;
+}
+
+.e-badge {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 700;
+  display: inline-block;
+  margin-bottom: 2px;
+}
+
+.e-badge.blue {
+  color: #0284C7;
+}
+
+.e-badge.orange {
+  color: #EA580C;
+}
+
+.e-badge.dark {
+  color: #0F172A;
+}
+
+.escape-rule-item p {
+  font-size: 0.64rem;
+  color: var(--ink-soft);
+  line-height: 1.2;
+}
+
+/* CINEMA 60FPS ZOOM (SLIDE 4.4) */
+.full-bleed-media-container {
+  flex: 1;
+  min-height: 0;
+  height: calc(100% - clamp(30px, 5vh, 42px));
+  display: flex;
+}
+
+.full-video-frame {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  border: 2px solid var(--ink);
+  padding: 0;
+  position: relative;
+}
+
+.video-badge-cinema {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: rgba(15, 23, 42, 0.85);
+  color: #38BDF8;
+  border: 1px solid #0284C7;
+  z-index: 10;
+}
+
+.video-mockup-layer {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.cinema-canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cinema-overlay-controls {
+  position: absolute;
+  bottom: 8px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+}
+
+.zoom-counter {
+  color: #00F5D4;
+  font-weight: 700;
+}
+
+.zoom-status {
+  color: #94A3B8;
+}
+
+/* ==========================================================================
+   15. BIOLOGÍA & TENNIS COURT (SLIDE 5.2, 5.3)
+   ========================================================================== */
+.ifs-matrix-card {
+  background: var(--white);
+  border: 1.5px solid var(--emerald-neon);
+  border-radius: 6px;
+  padding: 8px 10px;
+}
+
+.ifs-matrix-card h4 {
+  font-family: var(--font-title);
+  font-size: 0.74rem;
+  color: #065F46;
+  margin-bottom: 4px;
+}
+
+.ifs-table-mini {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  background: #ECFDF5;
+  padding: 4px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+}
+
+.ifs-note {
+  font-size: 0.64rem;
+  color: var(--ink-soft);
+  line-height: 1.25;
+}
+
+.stat-callout-hero {
+  background: var(--white);
+  border-left: 4px solid var(--emerald-neon);
+  border-radius: 6px;
+  padding: 10px 12px;
+  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.08);
+}
+
+.sc-hero-val {
+  display: block;
+  font-family: var(--font-hero);
+  font-size: clamp(1.6rem, 3.8vh, 2.2rem);
+  font-weight: 800;
+  color: #065F46;
+  line-height: 1;
+}
+
+.sc-hero-sub {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.comparison-pill-box {
+  background: var(--white);
+  border: 1.5px solid var(--paper-line);
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: clamp(0.66rem, 1.35vh, 0.76rem);
+  color: var(--ink-soft);
+  line-height: 1.3;
+}
+
+.lung-tennis-mockup {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 6px;
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: var(--ink);
+}
+
+/* ==========================================================================
+   16. ANTENAS, CRIPTO, SOC MONITOR (SLIDE 7.2, 8.1, 8.2)
+   ========================================================================== */
+.antenna-feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.af-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--white);
+  padding: 5px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--paper-line);
+  font-size: clamp(0.64rem, 1.3vh, 0.72rem);
+}
+
+.af-item.blue {
+  border-left: 3px solid #0284C7;
+}
+
+.af-item.green {
+  border-left: 3px solid #10B981;
+}
+
+.af-item.amber {
+  border-left: 3px solid var(--amber);
+}
+
+.af-item.purple {
+  border-left: 3px solid #7B2CBF;
+}
+
+.crypto-explain-card {
+  background: var(--white);
+  border: 1.5px solid var(--paper-line);
+  border-radius: 6px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.crypto-metric-badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #059669;
+  background: #ECFDF5;
+  padding: 3px 6px;
+  border-radius: 4px;
+  text-align: center;
+  margin-top: 4px;
+}
+
+.soc-alert-card {
+  background: #0F172A;
+  border: 1.5px solid #334155;
+  border-radius: 6px;
+  padding: 8px 10px;
+  color: #E2E8F0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.soc-status-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.soc-pulse-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 6px #10B981;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+}
+
+.soc-title {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.soc-desc {
+  font-size: 0.64rem;
+  color: #94A3B8;
+  line-height: 1.25;
+}
+
+.soc-warning-box {
+  background: #7F1D1D;
+  border: 1px solid #EF4444;
+  color: #FEE2E2;
+  padding: 4px 6px;
+  border-radius: 4px;
+  font-size: 0.62rem;
+  line-height: 1.2;
+}
+
+/* ==========================================================================
+/* ==========================================================================
+   17. CONCLUSIONES (SLIDE 10.1, 10.2) - DISEÑO CLARO EDITORIAL
+   ========================================================================== */
+.takeaway-stack-3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: clamp(12px, 2.2vh, 18px);
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  padding: 6px 14px 14px;
+  box-sizing: border-box;
+}
+
+.takeaway-row {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2.5vw, 26px);
+  background: var(--white);
+  border: 1.5px solid var(--paper-line);
+  border-radius: 8px;
+  padding: clamp(14px, 2.2vh, 20px) clamp(18px, 2.8vw, 28px);
+  box-shadow: 0 4px 14px rgba(24, 43, 77, 0.05);
+  flex: 1;
+  box-sizing: border-box;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.takeaway-row:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(24, 43, 77, 0.12);
+  background: #FFFFFF;
+}
+
+.takeaway-row.row-cyan {
+  border-left: 6px solid var(--cyan-neon);
+  background: linear-gradient(90deg, rgba(0, 180, 216, 0.06) 0%, var(--white) 18%);
+}
+.takeaway-row.row-cyan:hover {
+  border-color: var(--cyan-neon);
+}
+
+.takeaway-row.row-amber {
+  border-left: 6px solid var(--amber);
+  background: linear-gradient(90deg, rgba(201, 138, 44, 0.08) 0%, var(--white) 18%);
+}
+.takeaway-row.row-amber:hover {
+  border-color: var(--amber);
+}
+
+.takeaway-row.row-purple {
+  border-left: 6px solid var(--purple-neon);
+  background: linear-gradient(90deg, rgba(123, 44, 191, 0.06) 0%, var(--white) 18%);
+}
+.takeaway-row.row-purple:hover {
+  border-color: var(--purple-neon);
+}
+
+.takeaway-num {
+  font-family: var(--font-hero);
+  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1;
+  flex-shrink: 0;
+  letter-spacing: -0.03em;
+}
+
+.takeaway-row.row-cyan .takeaway-num {
+  color: var(--cyan-neon);
+}
+.takeaway-row.row-amber .takeaway-num {
+  color: var(--amber-dark);
+}
+.takeaway-row.row-purple .takeaway-num {
+  color: var(--purple-neon);
+}
+
+.takeaway-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.takeaway-body h4 {
+  font-family: var(--font-title);
+  font-size: clamp(1.05rem, 1.9vw, 1.28rem);
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+.takeaway-body p {
+  font-family: var(--font-body);
+  font-size: clamp(0.85rem, 1.4vw, 1.02rem);
+  color: var(--ink-soft);
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* Diapositiva Final: Solo la Frase en Estilo Claro Editorial */
+.final-quote-only-slide {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(20px, 4vh, 48px);
+  box-sizing: border-box;
+}
+
+.final-quote-hero {
+  position: relative;
+  background: var(--white);
+  border: 2px solid var(--amber);
+  border-radius: 12px;
+  padding: clamp(28px, 5vh, 52px) clamp(32px, 5vw, 68px);
+  box-shadow: 0 12px 36px rgba(201, 138, 44, 0.16), 0 2px 10px rgba(24, 43, 77, 0.06);
+  max-width: 92%;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.final-quote-hero:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 44px rgba(201, 138, 44, 0.22), 0 4px 14px rgba(24, 43, 77, 0.08);
+}
+
+
+.final-hero-quote-text {
+  font-family: var(--font-hero);
+  font-size: clamp(1.25rem, 2.7vw, 1.95rem);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.55;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+/* ==========================================================================
+   18. CÁMARA WEB ARRASTRABLE (CIRCULAR)
+   ========================================================================== */
+.camera-placeholder.camera-circle {
+  width: clamp(75px, 12vh, 95px);
+  height: clamp(75px, 12vh, 95px);
+  border-radius: 50%;
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  z-index: 99;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  user-select: none;
+  overflow: hidden;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.camera-placeholder.camera-circle:hover {
+  border-color: var(--amber);
+}
+
+.camera-placeholder.camera-circle.active-stream {
+  border-color: #10B981;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+}
+
+.camera-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+
+.camera-placeholder.active-stream .camera-video {
+  display: block;
+}
+
+.camera-empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-soft);
+}
+
+.camera-placeholder.active-stream .camera-empty-state {
+  display: none;
+}
+
+/* ==========================================================================
+   19. TOOLBAR INFERIOR
+   ========================================================================== */
+.presentation-toolbar {
+  width: 100%;
+  height: var(--toolbar-h);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  background: var(--white);
+  border: 1.5px solid var(--ink);
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(24, 43, 77, 0.08);
+}
+
+.pres-nav-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-tech {
+  background: var(--white);
+  border: 1.5px solid var(--ink);
+  color: var(--ink);
+  font-family: var(--font-title);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.btn-tech:hover:not(:disabled) {
+  background: var(--ink);
+  color: #fff;
+}
+
+.btn-tech:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.btn-tech.primary {
+  background: var(--amber);
+  border-color: var(--amber);
+  color: #fff;
+}
+
+.btn-tech.primary:hover:not(:disabled) {
+  background: var(--amber-dark);
+}
+
+.pres-tabs-group {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 2px 4px;
+  max-width: calc(100% - 240px);
+}
+
+.pres-tabs-group::-webkit-scrollbar {
+  display: none;
+}
+
+.pres-tab-pill {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink);
+  background: var(--white);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  padding: 0;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.pres-tab-pill .pres-pill-label {
+  display: none;
+}
+
+.pres-tab-pill:hover {
+  border-color: var(--amber);
+  color: var(--amber);
+  transform: scale(1.12);
+}
+
+.pres-tab-pill.active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+  transform: scale(1.18);
+  box-shadow: 0 2px 6px rgba(24, 43, 77, 0.25);
+}
+
+.global-counter-pill {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--paper-line);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.btn-camera-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink);
+  background: var(--white);
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  padding: 0;
+}
+
+.btn-camera-circle:hover {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+
+.btn-camera-circle.active {
+  background: #DC2626;
+  border-color: #DC2626;
+  color: #fff;
+}
