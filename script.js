@@ -43,6 +43,18 @@ function initPresentationDeck() {
   const totalSlides = slides.length;
   const slidePills = [];
 
+  // Recuperar última diapositiva visitada para no reiniciar al recargar
+  let savedSlideIndex = 0;
+  try {
+    const stored = localStorage.getItem('presentation_saved_slide');
+    if (stored !== null) {
+      const parsed = parseInt(stored, 10);
+      if (!isNaN(parsed) && parsed >= 0 && parsed < totalSlides) {
+        savedSlideIndex = parsed;
+      }
+    }
+  } catch (e) {}
+
   // Generar píldoras de navegación para todas las diapositivas (1 a total)
   if (tabsContainer) {
     tabsContainer.innerHTML = '';
@@ -70,6 +82,11 @@ function initPresentationDeck() {
     if (index < 0 || index >= totalSlides) return;
     currentSlideIndex = index;
     window.currentSlideIndex = currentSlideIndex;
+
+    // Guardar posición actual para recordar en recargas
+    try {
+      localStorage.setItem('presentation_saved_slide', currentSlideIndex);
+    } catch (e) {}
 
     const targetSlide = slides[currentSlideIndex];
 
@@ -120,11 +137,13 @@ function initPresentationDeck() {
       });
     });
 
-    // Alternar modo cine puro para la Diapositiva 1 y ocultar cámara en portada (Diapositivas 1 y 2)
+    // Alternar modo cine puro para Diapositiva 1, y ocultar cámara en portada y diapositivas de referencias
     const wrap = document.querySelector('.presentation-wrap');
+    const isRefSlide = targetSlide && (targetSlide.dataset.subtopic === '11' || currentSlideIndex >= totalSlides - 3);
     if (wrap) {
       wrap.classList.toggle('first-slide-cinema', currentSlideIndex === 0);
-      wrap.classList.toggle('hide-camera', currentSlideIndex <= 1);
+      wrap.classList.toggle('hide-camera', currentSlideIndex <= 1 || isRefSlide);
+      wrap.classList.toggle('ref-slide-mode', isRefSlide);
     }
 
     // Disparar redibujado de canvas activos si la diapositiva tiene uno
@@ -347,7 +366,7 @@ function initPresentationDeck() {
   });
 
   window.goToSlide = goToSlide;
-  goToSlide(0);
+  goToSlide(savedSlideIndex);
 }
 
 function triggerActiveSlideCanvases(slide) {
